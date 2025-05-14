@@ -15,6 +15,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCalendar, MatDatepickerModule } from '@angular/material/datepicker';
 import { DateAdapter, MAT_DATE_FORMATS, provideNativeDateAdapter } from '@angular/material/core';
 import { User } from '../../../src/models/user.class';
+import { AsyncPipe } from '@angular/common';
+import { Observable } from 'rxjs';
+import { Firestore, addDoc, collection, collectionData } from '@angular/fire/firestore';
 
 
 @Component({
@@ -33,13 +36,19 @@ import { User } from '../../../src/models/user.class';
   styleUrl: './dialog-add-user.component.scss'
 })
 export class DialogAddUserComponent {
+  firestore: Firestore = inject(Firestore);
 
   user: User = new User();
   birthDate!: Date;
 
-  saveUser() {
+  async saveUser() {
     this.user.birthDate = this.birthDate.getTime();
     console.log('Current user:', this.user);
+    // this.firestore.collection('users').add(this.user)
+    const usersCollection = collection(this.firestore, 'users');
+    await addDoc(usersCollection, this.user.toJSON()).then((result: any)=>{
+      console.log('Added:', result);      
+    });
 
   }
 }
