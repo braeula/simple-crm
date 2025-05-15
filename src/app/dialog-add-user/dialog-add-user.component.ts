@@ -41,14 +41,20 @@ export class DialogAddUserComponent {
   user: User = new User();
   birthDate!: Date;
 
+  constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>) { }
+
   async saveUser() {
     this.user.birthDate = this.birthDate.getTime();
     console.log('Current user:', this.user);
-    // this.firestore.collection('users').add(this.user)
     const usersCollection = collection(this.firestore, 'users');
     await addDoc(usersCollection, this.user.toJSON()).then((result: any)=>{
       console.log('Added:', result);      
     });
+    this.closeDialog();
 
+  }
+
+  closeDialog() {
+    this.dialogRef.close();
   }
 }
