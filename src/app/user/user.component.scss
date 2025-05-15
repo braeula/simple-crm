@@ -5,16 +5,46 @@ button {
 }
 
 mat-card {
-    padding: 16px;
+    padding-top: 8px;
 }
 
 .user-table {
     width: 100%;
-    
-    th{
+    border-collapse: collapse;
+
+    tr {
+        height: 48px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+
+        &:last-child {
+            border-bottom: unset;
+        }
+
+        td {
+            &:first-child {
+                padding-left: 16px;
+            }
+        }
+
+        &:hover {
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.04);
+
+            &:first-child {
+                cursor: context-menu;
+                background-color: unset;
+            }
+        }
+    }
+
+    th {
         text-align: start;
         color: rgba(0, 0, 0, 0.5);
         font-size: 14px;
         font-weight: 500;
+
+        &:first-child {
+            padding-left: 16px;
+        }
     }
 }
