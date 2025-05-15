@@ -3,3 +3,18 @@ button {
     right: 56px;
     bottom: 56px;
 }
+
+mat-card {
+    padding: 16px;
+}
+
+.user-table {
+    width: 100%;
+    
+    th{
+        text-align: start;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 14px;
+        font-weight: 500;
+    }
+}
