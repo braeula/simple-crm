@@ -5,16 +5,16 @@
             <th>Last Name</th>
             <th>City</th>
         </tr>
-        <tr>
-            <td>asdf</td>
-            <td>asdf</td>
-            <td>asdfasdf</td>
+        @for (user of allUsers; track user.id){
+        <tr [routerLink]="['/user', user.id]">
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.city}}</td>
         </tr>
-        <tr>
-            <td>asdf</td>
-            <td>asdf</td>
-            <td>asdfasdf</td>
-        </tr>
+        }@empty {
+        <tr><td>Keine Benutzer gefunden.</td></tr>
+        }
+
     </table>
 </mat-card>
 
