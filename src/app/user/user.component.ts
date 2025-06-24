@@ -25,20 +25,17 @@ export class UserComponent {
   firestore: Firestore = inject(Firestore);
   private unsubscribe: Unsubscribe | undefined;
   user: User = new User();
-  allUsers: User[] = [];
+  allUsers: any[] = [];
 
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    // this.firestore.collection('users').valueChanges().subscribe((changes:any)=>{
-    //   console.log('Recieved changes from DB',changes);      
-    // })
     const usersCollection = collection(this.firestore, 'users');
     onSnapshot(usersCollection, (snapshot) => {
-      const changes = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() as Omit<User, 'id'> }));
+      const changes = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       console.log('Received changes from DB', changes);
       this.allUsers = changes;
-      
+
     }, (error) => {
       console.error('Error receiving changes:', error);
     });
