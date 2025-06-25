@@ -1,1 +1,33 @@
-<p>dialog-edit-user works!</p>
+<h2 mat-dialog-title>Edit User</h2>
+<mat-dialog-content>
+    <div class="mt-8">
+        <mat-form-field class="mr-16 mt-8" appearance="outline">
+            <mat-label>First Name</mat-label>
+            <!-- []=input, ()=output, [(ngModel)]=two-way-binding, Änderungen werden automatisch auf beiden Seiten gemacht -->
+            <input [(ngModel)]="user.firstName" matInput placeholder="Placeholder">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input [(ngModel)]="user.lastName" matInput placeholder="Placeholder">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="full-width">
+            <mat-label>Choose a date</mat-label>
+            <input [(ngModel)]="birthDate" matInput [matDatepicker]="datepicker" />
+            <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+            <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+            <mat-datepicker #datepicker>
+                <mat-datepicker-actions>
+                    <button mat-button matDatepickerCancel>Cancel</button>
+                    <button mat-raised-button matDatepickerApply>Apply</button>
+                </mat-datepicker-actions>
+            </mat-datepicker>
+        </mat-form-field>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Cancel</button>
+    <button mat-button (click)="saveUser()" cdkFocusInitial>Save</button>
+</mat-dialog-actions>

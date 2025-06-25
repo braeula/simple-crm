@@ -1,8 +1,8 @@
 <mat-card class="user-detail-header">
-    <button mat-icon-button [matMenuTriggerFor]="menu" class="right-top-corner">
+    <button mat-icon-button [matMenuTriggerFor]="userDetailMenu" class="right-top-corner">
         <mat-icon>more_vert</mat-icon>
     </button>
-    <mat-menu #menu="matMenu">
+    <mat-menu #userDetailMenu="matMenu">
         <button mat-menu-item (click)="editUserDetail()">Edit</button>
     </mat-menu>
 
@@ -14,11 +14,11 @@
 </mat-card>
 
 <mat-card class="mt-32">
-    <button mat-icon-button [matMenuTriggerFor]="menu" class="right-top-corner">
+    <button mat-icon-button [matMenuTriggerFor]="addressMenu" class="right-top-corner">
         <mat-icon>more_vert</mat-icon>
     </button>
-    <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="editAdress()">Edit</button>
+    <mat-menu #addressMenu="matMenu">
+        <button mat-menu-item (click)="editAddress()">Edit</button>
     </mat-menu>
 
     <mat-card-header>
