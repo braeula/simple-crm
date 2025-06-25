@@ -5,11 +5,12 @@ import { ActivatedRoute } from '@angular/router';
 import { User } from '../../models/user.class';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-user-detail',
   standalone: true,
-  imports: [MatCardModule, MatIconModule, MatButtonModule],
+  imports: [MatCardModule, MatIconModule, MatButtonModule, MatMenuModule],
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.scss'
 })
@@ -80,4 +81,8 @@ export class UserDetailComponent {
       console.error('Fehler:', error);
     });
   }
+
+  editAdress() { }
+
+  editUserDetail() { }
 }
